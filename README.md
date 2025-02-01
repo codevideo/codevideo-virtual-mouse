@@ -1,6 +1,6 @@
 # @fullstackcraft/codevideo-virtual-author
 
-![NPM Version](https://img.shields.io/npm/v/:fullstackcraftllc/codevideo-virtual-author)
+![NPM Version](https://img.shields.io/npm/v/@fullstackcraftllc/codevideo-virtual-author)
 
 `codevideo-virtual-author` is a TypeScript class that simulates a virtual author that can speak. This lightweight and versatile library is ideal for building educational tools, code playgrounds, and interactive coding environments within web applications.
 
