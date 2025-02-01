@@ -1,0 +1,1 @@
+export { VirtualAuthor } from './VirtualAuthor';
