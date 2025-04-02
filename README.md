@@ -1,33 +1,30 @@
-# @fullstackcraft/codevideo-virtual-author
+# @fullstackcraft/codevideo-virtual-mouse
 
-![NPM Version](https://img.shields.io/npm/v/@fullstackcraftllc/codevideo-virtual-author)
+![NPM Version](https://img.shields.io/npm/v/@fullstackcraftllc/codevideo-virtual-mouse)
 
-`codevideo-virtual-author` is a TypeScript class that simulates a virtual author that can speak. This lightweight and versatile library is ideal for building educational tools, code playgrounds, and interactive coding environments within web applications.
+`codevideo-virtual-mouse` is a TypeScript class that simulates a virtual mouse that can speak. This lightweight and versatile library is ideal for building educational tools, code playgrounds, and interactive coding environments within web applications.
 
 This library heavily relies on the types from [codevideo-types](https://github.com/codevideo/codevideo-types)
 
 ## Example Usage
 
 ```typescript
-import { VirtualAuthor } from '@fullstackcraftllc/codevideo-virtual-author';
+import { VirtualMouse } from '@fullstackcraftllc/codevideo-virtual-mouse';
 
-// Initialize a VirtualAuthor instance with initial existing command history
-const virtualAuthor = new VirtualAuthor();
+// Initialize a VirtualMouse instance with initial existing command history
+const virtualMouse = new VirtualMouse();
 
-// Apply speak action to the virtual author
-virtualAuthor.applyActions([
-  { name: 'speak-before', value: "Hi! I'm Chris, virtual CodeVideo author!" }
+// Apply speak action to the virtual mouse
+virtualMouse.applyActions([
+  { name: 'mouse-move-file-explorer', value: "1" }
 ]);
 
-// Use the virtual author object
-const actionsApplied = virtualAuthor.getActionsApplied();
-const currentSpeechCaption = virtualAuthor.getCurrentSpeechCaption();
+// Use the virtual mouse object
+const currentLocation = virtualMouse.getCurrentLocation();
 
 // Log the final code and actions applied
-console.log('Actions applied:');
-console.log(actionsApplied);
-console.log('Current speech caption:');
-console.log(currentSpeechCaption); // "Hi! I'm Chris, virtual CodeVideo author!"
+console.log('Current mouse location:');
+console.log(currentLocation);  // "file-explorer"
 ```
 
 ## Available Methods
@@ -38,15 +35,15 @@ Apply a single action to the code.
 
 ### `applyActions(actions: Array<IAction>): void`
 
-Apply a series of actions to the virtual author.
+Apply a series of actions to the virtual mouse.
 
 ### `getActionsApplied(): Array<IAction>`
 
-Get the actions applied to the virtual author.
+Get the actions applied to the virtual mouse.
 
 ### `getCurrentSpeechCaption(): string`
 
-Get the current speech caption of the virtual author. Returns an empty string if no speech caption is set.
+Get the current speech caption of the virtual mouse. Returns an empty string if no speech caption is set.
 
 ## Why?
 

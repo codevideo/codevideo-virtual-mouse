@@ -1,1 +1,1 @@
-export { VirtualAuthor } from './VirtualAuthor';
+export { VirtualMouse } from './VirtualMouse';

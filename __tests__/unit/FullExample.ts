@@ -1,33 +1,67 @@
-import { VirtualAuthor } from "../../src/VirtualAuthor";
+import { VirtualMouse } from "../../src/VirtualMouse";
 import { describe, expect, it } from "@jest/globals";
-import { AuthorAction } from "@fullstackcraftllc/codevideo-types";
+import { MouseAction } from "@fullstackcraftllc/codevideo-types";
 
-describe("VirtualAuthor", () => {
+describe("VirtualMouse", () => {
   describe("basic functionality", () => {
     it("should initialize with empty state", () => {
-      const virtualAuthor = new VirtualAuthor();
-      expect(virtualAuthor.getActionsApplied()).toEqual([]);
-      expect(virtualAuthor.getCurrentSpeechCaption()).toEqual("");
+      const virtualMouse = new VirtualMouse();
+      expect(virtualMouse.getCurrentMouseSnapshot()).toEqual({
+        location: "editor",
+        currentHoveredFileName: "",
+        currentHoveredFolderName: "",
+        x: 0,
+        y: 0,
+        timestamp: 0,
+        type: 'move',
+        button: 0,
+        buttonStates: {
+          left: false,
+          right: false,
+          middle: false,
+        },
+        scrollPosition: {
+          x: 0,
+          y: 0,
+        },
+        scrollDelta: 0,
+      });
     });
 
-    it("should apply actions and return them", () => {
-      const actions: AuthorAction[] = [
+    it("should update its location when we move to file-explorer", () => {
+      const actions: MouseAction[] = [
         {
-          name: "author-speak-before",
-          value: "Here I'm speaking before whatever is the next action."
-        },
-        {
-          name: "author-speak-during",
-          value: "Here I'm speaking during whatever is the next action."
-        },
-        {
-          name: "author-speak-after",
-          value: "Here I'm speaking after whatever is the next action."
+          name: "mouse-move-file-explorer",
+          value: "1"
         }
       ];
-      const virtualAuthor = new VirtualAuthor(actions);
-      expect(virtualAuthor.getActionsApplied()).toEqual(actions);
-      expect(virtualAuthor.getCurrentSpeechCaption()).toEqual("Here I'm speaking after whatever is the next action.");
+      const virtualMouse = new VirtualMouse(actions);
+      expect(virtualMouse.getActionsApplied()).toEqual(actions);
+      expect(virtualMouse.getCurrentLocation()).toEqual("file-explorer");
+    });
+
+    it("should update its location when we move to editor", () => {
+      const actions: MouseAction[] = [
+        {
+          name: "mouse-move-editor",
+          value: "1"
+        }
+      ];
+      const virtualMouse = new VirtualMouse(actions);
+      expect(virtualMouse.getActionsApplied()).toEqual(actions);
+      expect(virtualMouse.getCurrentLocation()).toEqual("editor");
+    });
+
+    it("should update its location when we move to terminal", () => {
+      const actions: MouseAction[] = [
+        {
+          name: "mouse-move-terminal",
+          value: "1"
+        }
+      ];
+      const virtualMouse = new VirtualMouse(actions);
+      expect(virtualMouse.getActionsApplied()).toEqual(actions);
+      expect(virtualMouse.getCurrentLocation()).toEqual("terminal");
     });
   });
 });
