@@ -36,11 +36,7 @@ export class VirtualMouse {
    * @param action The action to apply
    */
   applyAction(action: MouseAction) {
-          // reset hovered file and folder name
-          this.currentHoveredFileName = "";
-          this.currentHoveredFolderName = "";
     switch (action.name) {
-
       // movement actions
       case 'mouse-move-file-explorer':
         this.currentLocation = 'file-explorer';
@@ -67,25 +63,35 @@ export class VirtualMouse {
         break;
       // file explorer context menu movements
       case 'mouse-move-file-explorer-context-menu-create-new-file':
-         this.currentLocation = 'file-explorer-context-menu-create-new-file';
+        this.currentLocation = 'file-explorer-context-menu-create-new-file';
         break;
       case 'mouse-move-file-explorer-context-menu-create-new-folder':
-         this.currentLocation = 'file-explorer-context-menu-create-new-folder';
+        this.currentLocation = 'file-explorer-context-menu-create-new-folder';
         break;
       // file context menu movements
       case 'mouse-move-file-explorer-file-context-menu-rename':
-         this.currentLocation = 'file-explorer-file-context-menu-rename';
+        this.currentLocation = 'file-explorer-file-context-menu-rename';
         break;
       case 'mouse-move-file-explorer-file-context-menu-delete':
-         this.currentLocation = 'file-explorer-file-context-menu-delete';
+        this.currentLocation = 'file-explorer-file-context-menu-delete';
         break;
       // folder context menu movements
       case 'mouse-move-file-explorer-folder-context-menu-rename':
-         this.currentLocation = 'file-explorer-folder-context-menu-rename';
+        this.currentLocation = 'file-explorer-folder-context-menu-rename';
         break;
       case 'mouse-move-file-explorer-folder-context-menu-delete':
-         this.currentLocation = 'file-explorer-folder-context-menu-delete';
+        this.currentLocation = 'file-explorer-folder-context-menu-delete';
         break;
+    }
+
+    if (action.name.startsWith('mouse-move') && action.name !== 'mouse-move-file-explorer-file') {
+      // reset the hovered file name if we're not hovering over a file
+      this.currentHoveredFileName = '';
+    }
+
+    if (action.name.startsWith('mouse-move') && action.name !== 'mouse-move-file-explorer-folder') {
+      // reset the hovered folder name if we're not hovering over a folder
+      this.currentHoveredFolderName = '';
     }
 
     this.actionsApplied.push(action);
@@ -110,13 +116,13 @@ export class VirtualMouse {
       type: 'move',
       button: 0,
       buttonStates: {
-          left: false,
-          right: false,
-          middle: false,
+        left: false,
+        right: false,
+        middle: false,
       },
       scrollPosition: {
-          x: 0,
-          y: 0,
+        x: 0,
+        y: 0,
       },
       scrollDelta: 0,
     }
@@ -138,11 +144,11 @@ export class VirtualMouse {
     return this.actionsApplied;
   }
 
-   /**
-   * Sets the verbose mode for the virtual file explorer
-   * @param verbose Whether to enable verbose
-   */
-   setVerbose(verbose: boolean): void {
+  /**
+  * Sets the verbose mode for the virtual file explorer
+  * @param verbose Whether to enable verbose
+  */
+  setVerbose(verbose: boolean): void {
     this.verbose = verbose;
   }
 }

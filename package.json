@@ -1,6 +1,6 @@
 {
   "name": "@fullstackcraftllc/codevideo-virtual-mouse",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "description": "TypeScript class that simulates a mouse.",
   "type": "module",
   "main": "dist/index.js",
