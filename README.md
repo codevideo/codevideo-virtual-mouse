@@ -27,26 +27,8 @@ console.log('Current mouse location:');
 console.log(currentLocation);  // "file-explorer"
 ```
 
-## Available Methods
-
-### `applyAction(action: IAction): void`
-
-Apply a single action to the code.
-
-### `applyActions(actions: Array<IAction>): void`
-
-Apply a series of actions to the virtual mouse.
-
-### `getActionsApplied(): Array<IAction>`
-
-Get the actions applied to the virtual mouse.
-
-### `getCurrentSpeechCaption(): string`
-
-Get the current speech caption of the virtual mouse. Returns an empty string if no speech caption is set.
-
 ## Why?
 
-Why do we need a seemingly useless class? This library, along with [`codevideo-virtual-code-block`](https://github.com/codevideo/codevideo-virtual-code-block) create the backbone of [`codevideo-virtual-code-editor`](https://github.com/codevideo/codevideo-virtual-code-editor) which are used to validate steps across the CodeVideo ecosystem. This is a small part of a larger project to create a declarative way to build, edit, and generate step by step educational video software courses.
+Why do we need a seemingly useless class? This library, along with many others create an entire event sourcing framework for the IDE. This is a small part of a larger project to create a declarative way to build, edit, and generate step by step educational video software courses.
 
 See more at [codevideo.io](https://codevideo.io)
