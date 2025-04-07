@@ -62,11 +62,11 @@ export class VirtualMouse {
         // TODO: would need to introduce an entire virtual screen / coordinates system
         break;
       // file explorer context menu movements
-      case 'mouse-move-file-explorer-context-menu-create-new-file':
-        this.currentLocation = 'file-explorer-context-menu-create-new-file';
+      case 'mouse-move-file-explorer-context-menu-new-file':
+        this.currentLocation = 'file-explorer-context-menu-new-file';
         break;
-      case 'mouse-move-file-explorer-context-menu-create-new-folder':
-        this.currentLocation = 'file-explorer-context-menu-create-new-folder';
+      case 'mouse-move-file-explorer-context-menu-new-folder':
+        this.currentLocation = 'file-explorer-context-menu-new-folder';
         break;
       // file context menu movements
       case 'mouse-move-file-explorer-file-context-menu-rename':
@@ -76,6 +76,12 @@ export class VirtualMouse {
         this.currentLocation = 'file-explorer-file-context-menu-delete';
         break;
       // folder context menu movements
+      case 'mouse-move-file-explorer-folder-context-menu-new-file':
+        this.currentLocation = 'file-explorer-folder-context-menu-new-file';
+        break;
+      case 'mouse-move-file-explorer-folder-context-menu-new-folder':
+        this.currentLocation = 'file-explorer-folder-context-menu-new-folder';
+        break;
       case 'mouse-move-file-explorer-folder-context-menu-rename':
         this.currentLocation = 'file-explorer-folder-context-menu-rename';
         break;
