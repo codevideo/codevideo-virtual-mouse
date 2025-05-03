@@ -10,6 +10,7 @@ describe("VirtualMouse", () => {
         location: "editor",
         currentHoveredFileName: "",
         currentHoveredFolderName: "",
+        currentHoveredEditorTabFileName: "",
         x: 0,
         y: 0,
         timestamp: 0,

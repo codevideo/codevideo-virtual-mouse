@@ -62,5 +62,29 @@ describe("VirtualMouse", () => {
       virtualMouse.applyAction({name: "mouse-right-click", value: "1"})
       expect(virtualMouse.getCurrentMouseSnapshot().currentHoveredFolderName).toEqual("MyDir");
     })
+
+    it("should not reset the hovered file name if we are still moving within the file context menu", () => {
+      const virtualMouse = new VirtualMouse();
+      virtualMouse.applyAction({name: "mouse-move-file-explorer-file", value: "test.js"})
+      expect(virtualMouse.getCurrentMouseSnapshot().currentHoveredFileName).toEqual("test.js");
+      // now that we move to a file context menu, the hovered file name should not be reset
+      virtualMouse.applyAction({name: "mouse-move-file-explorer-file-context-menu-rename", value: "1"})
+      expect(virtualMouse.getCurrentMouseSnapshot().currentHoveredFileName).toEqual("test.js");
+      // now that we move to a file context menu, the hovered file name should not be reset
+      virtualMouse.applyAction({name: "mouse-move-file-explorer-file-context-menu-delete", value: "1"})
+      expect(virtualMouse.getCurrentMouseSnapshot().currentHoveredFileName).toEqual("test.js");
+    });
+
+    it("should not reset the hovered folder name if we are still moving within the folder context menu", () => {
+      const virtualMouse = new VirtualMouse();
+      virtualMouse.applyAction({name: "mouse-move-file-explorer-folder", value: "MyDir"})
+      expect(virtualMouse.getCurrentMouseSnapshot().currentHoveredFolderName).toEqual("MyDir");
+      // now that we move to a folder context menu, the hovered folder name should not be reset
+      virtualMouse.applyAction({name: "mouse-move-file-explorer-folder-context-menu-new-file", value: "1"})
+      expect(virtualMouse.getCurrentMouseSnapshot().currentHoveredFolderName).toEqual("MyDir");
+      // now that we move to a folder context menu, the hovered folder name should not be reset
+      virtualMouse.applyAction({name: "mouse-move-file-explorer-folder-context-menu-new-folder", value: "1"})
+      expect(virtualMouse.getCurrentMouseSnapshot().currentHoveredFolderName).toEqual("MyDir");
+    });
   });
 });
